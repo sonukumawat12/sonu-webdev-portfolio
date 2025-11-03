@@ -15,6 +15,14 @@ import clientwaveConfig from '../assets/project/clientwave/config-signature-feil
 import clientwaveDocIndex from '../assets/project/clientwave/doc-index.jpeg';
 import clientwaveLeadPage from '../assets/project/clientwave/lead-page.jpeg';
 
+// Payroll Management System images
+import payrollDashboard from '../assets/project/payroll/Dashboard.jpeg';
+import payrollLogin from '../assets/project/payroll/login.jpeg';
+import payrollCreateEmp from '../assets/project/payroll/create-emp.jpeg';
+import payrollCreatePayroll from '../assets/project/payroll/create-payroll.jpeg';
+import payrollAdvance from '../assets/project/payroll/advance.jpeg';
+import payrollGatepass from '../assets/project/payroll/gatepass.jpeg';
+
 export const portfolioData = {
   personal: {
     name: "Sonu Kumawat",
@@ -88,6 +96,54 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
+      title: "Payroll Management System",
+      description: "Comprehensive payroll and employee management solution",
+      longDescription: "A robust payroll management system designed to streamline HR processes including employee management, payroll processing, advance salary tracking, and gatepass management. The system features role-based access control, automated salary calculations, tax deductions, and comprehensive reporting capabilities.",
+      image: payrollDashboard,
+      gallery: [
+        {
+          id: 1,
+          title: "Dashboard Overview",
+          description: "Main dashboard with key metrics and quick access to payroll features",
+          image: payrollDashboard
+        },
+        {
+          id: 2,
+          title: "Login Screen",
+          description: "Secure authentication with role-based access control",
+          image: payrollLogin
+        },
+        {
+          id: 3,
+          title: "Employee Management",
+          description: "Create and manage employee profiles and details",
+          image: payrollCreateEmp
+        },
+        {
+          id: 4,
+          title: "Payroll Processing",
+          description: "Generate and manage employee payroll with automated calculations",
+          image: payrollCreatePayroll
+        },
+        {
+          id: 5,
+          title: "Advance Management",
+          description: "Track and manage employee advance salary requests",
+          image: payrollAdvance
+        },
+        {
+          id: 6,
+          title: "Gatepass System",
+          description: "Manage employee gatepass entries and exits",
+          image: payrollGatepass
+        }
+      ],
+      tech: ["Laravel", "React", "MySQL", "REST API", "Tailwind CSS"],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      id: 2,
       title: "HouseJet - Real-Estate CRM",
       description: "Comprehensive CRM system for real estate management",
       longDescription: "A full-featured Customer Relationship Management system designed specifically for real estate businesses. Built with Laravel, Vue.js, and MariaDB. Features include lead management, property listings, client tracking, appointment scheduling, and comprehensive reporting dashboard.",
@@ -223,55 +279,7 @@ export const portfolioData = {
       tech: ["Laravel", "Bootstrap", "MySQL", "PHP"],
       liveUrl: "#",
       githubUrl: "https://github.com/sonukumawat12/clinic-management-crm",
-    },
-    {
-      id: 4,
-      title: "HR Payroll System",
-      description: "Complete HR and payroll management solution",
-      longDescription: "A comprehensive HR management system with integrated payroll processing. Features include employee management, attendance tracking, salary calculation, tax management, leave management, performance reviews, and automated payroll generation.",
-      image: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800",
-      gallery: [
-        {
-          id: 1,
-          title: "Employee Dashboard",
-          description: "Comprehensive employee management interface",
-          image: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800"
-        },
-        {
-          id: 2,
-          title: "Attendance Tracking",
-          description: "Automated attendance and time tracking system",
-          image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
-        },
-        {
-          id: 3,
-          title: "Payroll Processing",
-          description: "Automated salary calculation and payroll generation",
-          image: "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800"
-        },
-        {
-          id: 4,
-          title: "Leave Management",
-          description: "Employee leave request and approval system",
-          image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
-        },
-        {
-          id: 5,
-          title: "Performance Reviews",
-          description: "Employee performance evaluation and feedback system",
-          image: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800"
-        },
-        {
-          id: 6,
-          title: "HR Reports",
-          description: "Comprehensive HR analytics and reporting dashboard",
-          image: "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=800"
-        }
-      ],
-      tech: ["Laravel", "Bootstrap 5", "MySQL", "PHP"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
+    }
   ],
 
   experience: [
