@@ -64,7 +64,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/90 animate-modal-fade-in overscroll-none" onClick={onClose}>
       <div
-        className="bg-gradient-to-br from-gray-900 to-gray-800 border border-white/20 rounded-xl sm:rounded-2xl max-w-6xl w-full max-h-[98vh] sm:max-h-[95vh] overflow-hidden animate-modal-slide-up"
+        className="bg-gradient-to-br from-gray-900 to-gray-800 border border-white/20 rounded-xl sm:rounded-2xl max-w-6xl w-full max-h-[95vh] sm:max-h-[95vh] overflow-hidden animate-modal-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
