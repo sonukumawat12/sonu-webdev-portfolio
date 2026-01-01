@@ -23,12 +23,102 @@ import payrollCreatePayroll from '../assets/project/payroll/create-payroll.jpeg'
 import payrollAdvance from '../assets/project/payroll/advance.jpeg';
 import payrollGatepass from '../assets/project/payroll/gatepass.jpeg';
 
+// Utility function to calculate total experience in years from experience array
+const calculateTotalExperience = (experienceArray: Array<{ duration: string }>): number => {
+  const monthNames: { [key: string]: number } = {
+    'january': 0, 'february': 1, 'march': 2, 'april': 3,
+    'may': 4, 'june': 5, 'july': 6, 'august': 7,
+    'september': 8, 'october': 9, 'november': 10, 'december': 11
+  };
+
+  let totalMonths = 0;
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+
+  experienceArray.forEach((exp) => {
+    const duration = exp.duration.toLowerCase();
+    const parts = duration.split(' - ');
+    
+    if (parts.length === 2) {
+      const startPart = parts[0].trim();
+      const endPart = parts[1].trim();
+      
+      // Parse start date
+      const startMatch = startPart.match(/(\w+)\s+(\d{4})/);
+      if (startMatch) {
+        const startMonthName = startMatch[1];
+        const startYear = parseInt(startMatch[2]);
+        const startMonth = monthNames[startMonthName] ?? 0;
+        
+        // Parse end date
+        let endYear: number;
+        let endMonth: number;
+        
+        if (endPart === 'present') {
+          endYear = currentYear;
+          endMonth = currentMonth;
+        } else {
+          const endMatch = endPart.match(/(\w+)\s+(\d{4})/);
+          if (endMatch) {
+            const endMonthName = endMatch[1];
+            endYear = parseInt(endMatch[2]);
+            endMonth = monthNames[endMonthName] ?? 0;
+          } else {
+            return; // Skip if can't parse
+          }
+        }
+        
+        // Calculate months for this experience
+        const monthsDiff = (endYear - startYear) * 12 + (endMonth - startMonth) + 1; // +1 to include both start and end months
+        totalMonths += monthsDiff;
+      }
+    }
+  });
+
+  // Convert months to years (round down)
+  return Math.floor(totalMonths / 12);
+};
+
+// Define experience array first
+const experienceData = [
+  {
+    id: 1,
+    title: "Full-stack Developer",
+    company: "Brahmastack Technologies",
+    duration: "August 2024 - Present",
+    description: "Leading full-stack development initiatives using Laravel, CakePHP, MariaDB, and Vue.js. Architecting scalable web applications with modern development practices, implementing robust APIs, and delivering high-performance solutions for enterprise clients.",
+    icon: "💼",
+  },
+  {
+    id: 2,
+    title: "Laravel Developer",
+    company: "WebNStack IT Solution Pvt Ltd",
+    duration: "March 2024 - July 2024",
+    description: "Engineered comprehensive healthcare management systems, HR-Payroll solutions, and CRM applications featuring patient database management, employee payroll processing, intelligent appointment scheduling, and multi-level role-based access control. Successfully deployed HIPAA-compliant solutions serving 200+ patients daily and streamlined HR operations for multiple organizations.",
+    icon: "🏥",
+  },
+  {
+    id: 3,
+    title: "Laravel Developer",
+    company: "Aladdin Digital Solutions",
+    duration: "August 2023 - October 2023",
+    description: "Developed and maintained multiple web applications using Laravel framework including ecommerce platforms and Zupito CRM - an online cab booking system. Gained extensive experience with live production projects, contributed to critical web development initiatives, mastered industry-standard workflows, and established strong foundation in modern development practices.",
+    icon: "🚀",
+  },
+];
+
+// Calculate total experience
+const totalExperienceYears = calculateTotalExperience(experienceData);
+
 export const portfolioData = {
   personal: {
     name: "Sonu Kumawat",
     title: "Full-Stack Web Developer",
     tagline: "Transforming ideas into powerful digital solutions with cutting-edge technologies",
-    bio: "Passionate full-stack developer with 5+ years of experience crafting innovative web solutions. I specialize in Laravel, Vue.js, and React, with a proven track record of delivering 17+ successful projects for diverse clients. My expertise spans from building comprehensive CRM systems to healthcare management platforms, always focusing on clean code, user experience, and scalable architecture.",
+    get bio() {
+      return `Passionate full-stack developer with ${totalExperienceYears}+ years of experience crafting innovative web solutions. I specialize in Laravel, Vue.js, and React, with a proven track record of delivering 17+ successful projects for diverse clients. My expertise spans from building comprehensive CRM systems to healthcare management platforms, always focusing on clean code, user experience, and scalable architecture.`;
+    },
     email: "sonukumawat6282@gmail.com",
     phone: "+91 63754 26292",
     location: "Jaipur, India",
@@ -64,7 +154,7 @@ export const portfolioData = {
   },
 
   stats: [
-    { label: "Years Experience", value: 5, suffix: "+" },
+    { label: "Years Experience", value: totalExperienceYears, suffix: "+" },
     { label: "Projects Completed", value: 17, suffix: "+" },
     { label: "Happy Clients", value: 13, suffix: "+" },
     { label: "Technologies Mastered", value: 15, suffix: "+" },
@@ -282,32 +372,7 @@ export const portfolioData = {
     }
   ],
 
-  experience: [
-    {
-      id: 1,
-      title: "Full-stack Developer",
-      company: "Brahmastack Technologies",
-      duration: "August 2024 - Present",
-      description: "Leading full-stack development initiatives using Laravel, CakePHP, MariaDB, and Vue.js. Architecting scalable web applications with modern development practices, implementing robust APIs, and delivering high-performance solutions for enterprise clients.",
-      icon: "💼",
-    },
-    {
-      id: 2,
-      title: "Laravel Developer",
-      company: "WebNStack IT Solution Pvt Ltd",
-      duration: "March 2024 - July 2024",
-      description: "Engineered comprehensive healthcare management systems, HR-Payroll solutions, and CRM applications featuring patient database management, employee payroll processing, intelligent appointment scheduling, and multi-level role-based access control. Successfully deployed HIPAA-compliant solutions serving 200+ patients daily and streamlined HR operations for multiple organizations.",
-      icon: "🏥",
-    },
-    {
-      id: 3,
-      title: "Laravel Developer",
-      company: "Aladdin Digital Solutions",
-      duration: "August 2023 - October 2023",
-      description: "Developed and maintained multiple web applications using Laravel framework including ecommerce platforms and Zupito CRM - an online cab booking system. Gained extensive experience with live production projects, contributed to critical web development initiatives, mastered industry-standard workflows, and established strong foundation in modern development practices.",
-      icon: "🚀",
-    },
-  ],
+  experience: experienceData,
 
   certifications: [
     {
